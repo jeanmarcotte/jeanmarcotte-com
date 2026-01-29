@@ -44,16 +44,17 @@ export const photo = defineType({
         "Cultural or ethnic representation in the photo, helping couples see themselves reflected",
     }),
     defineField({
-      name: "venueName",
-      title: "Venue Name",
-      type: "string",
-      description: "Name of the venue where the photo was taken",
+      name: "venue",
+      title: "Venue",
+      type: "reference",
+      to: [{ type: "venue" }],
+      description: "The venue where the photo was taken",
     }),
     defineField({
       name: "parkName",
       title: "Park Name",
       type: "string",
-      description: "Name of the park, if applicable",
+      description: "Name of the park, if applicable (for outdoor/park locations not in the venue list)",
     }),
     defineField({
       name: "ceremonyLocation",
@@ -140,7 +141,7 @@ export const photo = defineType({
   preview: {
     select: {
       title: "title",
-      subtitle: "venueName",
+      subtitle: "parkName",
       media: "image",
     },
     prepare({ title, subtitle, media }) {

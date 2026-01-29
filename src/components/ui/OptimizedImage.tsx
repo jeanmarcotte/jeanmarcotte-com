@@ -35,6 +35,8 @@ export interface OptimizedImageProps {
   lqip?: string;
   /** Additional CSS class names. */
   className?: string;
+  /** Callback fired when the image finishes loading. */
+  onLoad?: () => void;
 }
 
 /* ─── Component ───────────────────────────────────────────────────────────── */
@@ -60,6 +62,7 @@ export default function OptimizedImage({
   fit = "max",
   lqip,
   className,
+  onLoad,
 }: OptimizedImageProps) {
   // Compute height from aspect ratio if provided
   const computedHeight = aspectRatio
@@ -91,6 +94,7 @@ export default function OptimizedImage({
       priority={priority}
       loading={priority ? "eager" : "lazy"}
       className={className}
+      onLoad={onLoad}
       {...blurProps}
       style={{
         // Prevent CLS: maintain aspect ratio via CSS

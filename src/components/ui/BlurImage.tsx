@@ -37,7 +37,6 @@ export default function BlurImage({
       style={{ position: "relative" }}
     >
       <div
-        onLoad={handleLoad}
         style={{
           opacity: loaded ? 1 : 0,
           transition: `opacity ${fadeDuration}ms cubic-bezier(0.25, 0.1, 0.25, 1)`,
@@ -46,8 +45,7 @@ export default function BlurImage({
         <OptimizedImage
           {...props}
           className=""
-          // Forward the onLoad via the underlying img element
-          // Next/Image passes unknown props to the <img>, including onLoad via the wrapper
+          onLoad={handleLoad}
         />
       </div>
     </div>

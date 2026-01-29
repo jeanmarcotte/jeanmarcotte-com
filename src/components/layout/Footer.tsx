@@ -10,12 +10,16 @@ const quickLinks = [
 ];
 
 const serviceAreas = [
-  "Montreal",
-  "Quebec City",
-  "Ottawa",
   "Toronto",
-  "Laurentians",
-  "Eastern Townships",
+  "Vaughan",
+  "Woodbridge",
+  "Maple",
+  "Markham",
+  "Scarborough",
+  "Mississauga",
+  "Hamilton",
+  "Cambridge",
+  "Niagara",
 ];
 
 const socialLinks = [
@@ -138,7 +142,7 @@ export default function Footer() {
               reserved.
             </p>
             <p className="text-xs text-warm-gray-600">
-              Montreal, Quebec &middot; Available Worldwide
+              Toronto &amp; GTA &middot; Available Worldwide
             </p>
           </div>
         </div>

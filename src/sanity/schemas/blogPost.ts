@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+import { defineField, defineType, type Rule } from "sanity";
 
 export const blogPost = defineType({
   name: "blogPost",
@@ -84,7 +84,7 @@ export const blogPost = defineType({
                     name: "href",
                     type: "url",
                     title: "URL",
-                    validation: (rule: any) =>
+                    validation: (rule: Rule) =>
                       rule.uri({
                         allowRelative: true,
                         scheme: ["http", "https", "mailto", "tel"],
