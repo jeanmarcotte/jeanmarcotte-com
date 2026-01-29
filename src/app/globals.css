@@ -1,42 +1,307 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+
+/*
+ * Jean Marcotte Photography — Design System
+ *
+ * Premium wedding photography brand.
+ * Dark editorial aesthetic, warm neutrals, champagne/gold accents.
+ * Serif headings (Playfair Display) + clean sans body (Inter).
+ */
+
+/* ─── Google Fonts ──────────────────────────────────────────────────────────── */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* ─── Tailwind v4 Theme Configuration ───────────────────────────────────────── */
+
+@theme {
+  /* ── Color Palette: Charcoal ── */
+  --color-charcoal-50: #f7f7f6;
+  --color-charcoal-100: #e5e4e2;
+  --color-charcoal-200: #cac8c4;
+  --color-charcoal-300: #a8a5a0;
+  --color-charcoal-400: #86827c;
+  --color-charcoal-500: #6b6762;
+  --color-charcoal-600: #55524e;
+  --color-charcoal-700: #444240;
+  --color-charcoal-800: #2e2d2b;
+  --color-charcoal-900: #1a1918;
+  --color-charcoal-950: #0d0d0c;
+
+  /* ── Color Palette: Ivory ── */
+  --color-ivory-50: #fefdfb;
+  --color-ivory-100: #fdf9f3;
+  --color-ivory-200: #faf3e6;
+  --color-ivory-300: #f5e9d4;
+  --color-ivory-400: #eedcc0;
+  --color-ivory-500: #e6cfac;
+  --color-ivory-600: #d4b88e;
+  --color-ivory-700: #bfa070;
+  --color-ivory-800: #9a7f56;
+  --color-ivory-900: #6e5a3d;
+  --color-ivory-950: #3d3222;
+
+  /* ── Color Palette: Warm Gray ── */
+  --color-warm-gray-50: #faf9f7;
+  --color-warm-gray-100: #f0eee9;
+  --color-warm-gray-200: #e0ddd5;
+  --color-warm-gray-300: #cbc7bc;
+  --color-warm-gray-400: #b3aea1;
+  --color-warm-gray-500: #9a9486;
+  --color-warm-gray-600: #7d776b;
+  --color-warm-gray-700: #625d54;
+  --color-warm-gray-800: #4a4640;
+  --color-warm-gray-900: #33312d;
+  --color-warm-gray-950: #1f1e1b;
+
+  /* ── Color Palette: Gold / Champagne ── */
+  --color-gold-50: #fdf9ef;
+  --color-gold-100: #faf0d5;
+  --color-gold-200: #f4e0aa;
+  --color-gold-300: #eccc79;
+  --color-gold-400: #e4b84e;
+  --color-gold-500: #d4a23a;
+  --color-gold-600: #b8862e;
+  --color-gold-700: #986a27;
+  --color-gold-800: #7a5323;
+  --color-gold-900: #5c3f1c;
+  --color-gold-950: #33220f;
+
+  /* ── Color Palette: Midnight ── */
+  --color-midnight-50: #f4f5f7;
+  --color-midnight-100: #e3e5eb;
+  --color-midnight-200: #c6cad6;
+  --color-midnight-300: #a0a7b9;
+  --color-midnight-400: #78819a;
+  --color-midnight-500: #5b647e;
+  --color-midnight-600: #474f65;
+  --color-midnight-700: #3a4053;
+  --color-midnight-800: #2d3242;
+  --color-midnight-900: #1e2230;
+  --color-midnight-950: #12141e;
+
+  /* ── Typography ── */
+  --font-serif: "Playfair Display", "Georgia", "Times New Roman", serif;
+  --font-sans: "Inter", "Helvetica Neue", "Arial", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+
+  /* ── Letter Spacing ── */
+  --tracking-tighter: -0.04em;
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.12em;
+
+  /* ── Box Shadows ── */
+  --shadow-editorial: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+  /* ── Animation ── */
+  --animate-fade-in: fade-in 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  --animate-slide-up: slide-up 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  --animate-slide-down: slide-down 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  --animate-scale-in: scale-in 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+
+  /* ── Transition Duration ── */
+  --transition-duration-fast: 150ms;
+  --transition-duration-base: 300ms;
+  --transition-duration-slow: 500ms;
+  --transition-duration-slower: 700ms;
+
+  /* ── Easing ── */
+  --ease-elegant: cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─── Keyframes ─────────────────────────────────────────────────────────────── */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+/* ─── Base Styles ───────────────────────────────────────────────────────────── */
 
-@media (prefers-color-scheme: dark) {
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
   html {
-    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-charcoal-900);
+    background-color: var(--color-ivory-50);
+    line-height: 1.625;
+    overflow-x: hidden;
+  }
+
+  /* Elegant heading defaults */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-charcoal-950);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background-color: var(--color-gold-200);
+    color: var(--color-charcoal-950);
+  }
+}
+
+/* ─── Dark Section Utility ──────────────────────────────────────────────────── */
+
+@layer utilities {
+  .section-dark {
+    background-color: var(--color-charcoal-950);
+    color: var(--color-ivory-100);
+
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+      color: var(--color-ivory-50);
+    }
+
+    & a {
+      color: var(--color-ivory-200);
+    }
+
+    & ::selection {
+      background-color: var(--color-gold-500);
+      color: var(--color-charcoal-950);
+    }
+  }
+
+  .section-charcoal {
+    background-color: var(--color-charcoal-900);
+    color: var(--color-ivory-100);
+
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+      color: var(--color-ivory-50);
+    }
+  }
+
+  .section-ivory {
+    background-color: var(--color-ivory-50);
+    color: var(--color-charcoal-900);
+  }
+
+  .section-warm {
+    background-color: var(--color-warm-gray-50);
+    color: var(--color-charcoal-900);
+  }
+
+  /* Editorial text styles */
+  .text-editorial {
+    font-family: var(--font-serif);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  .text-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* Gold accent underline */
+  .accent-underline {
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -0.125rem;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--color-gold-400);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 500ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
   }
 }
